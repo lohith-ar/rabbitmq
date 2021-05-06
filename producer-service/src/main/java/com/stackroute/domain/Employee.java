@@ -1,5 +1,8 @@
 package com.stackroute.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
@@ -8,7 +11,7 @@ import java.io.Serializable;
 /*
  * Add annotation to indicate that object identity will be used during serialization.
  */
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = Employee.class )
 public class Employee implements Serializable {
 
     private String id;

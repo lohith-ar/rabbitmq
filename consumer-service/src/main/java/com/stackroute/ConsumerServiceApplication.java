@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /*
  * Add annotation to enable support for @RabbitListener annotations
  */
+@EnableRabbit
 @SpringBootApplication
 public class ConsumerServiceApplication {
 

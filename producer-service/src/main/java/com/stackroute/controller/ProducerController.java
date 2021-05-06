@@ -1,6 +1,8 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Employee;
+import com.stackroute.service.RabbitMqSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,12 @@ public class ProducerController {
     /*
      * Add code to autowire RabbitMQSender
      */
+    private RabbitMqSender rmsender;
+
+    @Autowired
+    public ProducerController(RabbitMqSender rmsender) {
+        this.rmsender = rmsender;
+    }
 
     /**
      * To get the property values
@@ -32,6 +40,7 @@ public class ProducerController {
         /*
          * Add code to send employee object to RabbitMQ
          */
+        rmsender.send(employee);
 
         return message;
     }
